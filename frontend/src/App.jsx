@@ -18,7 +18,7 @@ export default function App() {
 
     try {
       // REPLACE THIS with your Render URL (e.g., https://downtube-api.onrender.com)
-      const renderUrl = "https://your-service-name.onrender.com/download";
+      const renderUrl = "https://downtube-42qb.onrender.com/download";
 
       const response = await axios({
         url: `${renderUrl}?url=${encodeURIComponent(url)}`,
