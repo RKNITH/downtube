@@ -18,7 +18,7 @@ export default function App() {
 
     try {
       const response = await axios({
-        url: `http://localhost:4000/download?url=${encodeURIComponent(url)}`,
+        url: `https://vercel.com/raviranjans-projects-25bb5106/downtube/download?url=${encodeURIComponent(url)}`,
         method: 'GET',
         responseType: 'blob', // Necessary for file data
         onDownloadProgress: (progressEvent) => {
@@ -71,7 +71,7 @@ export default function App() {
       <div className="w-full max-w-xl bg-slate-900 border border-slate-800 p-8 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
         <div className="text-center mb-8">
           <h2 className="text-xl font-bold">YouTube Downloader</h2>
-          <p className="text-slate-500 text-sm">Python Backend • React Frontend</p>
+
         </div>
 
         <form onSubmit={startDownload} className="space-y-6">
