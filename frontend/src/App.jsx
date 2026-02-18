@@ -20,17 +20,25 @@ export default function App() {
       // REPLACE THIS with your Render URL (e.g., https://downtube-api.onrender.com)
       const renderUrl = "https://downtube-42qb.onrender.com/download";
 
+
+
+      // Inside startDownload function:
       const response = await axios({
         url: `${renderUrl}?url=${encodeURIComponent(url)}`,
         method: 'GET',
         responseType: 'blob',
+        timeout: 120000, // 2 minute timeout
         onDownloadProgress: (progressEvent) => {
           if (progressEvent.total) {
             const percent = Math.round((progressEvent.loaded * 100) / progressEvent.total);
             setProgress(percent);
+          } else {
+            // Fallback: If total size is unknown, show "Fake" progress up to 90%
+            setProgress((prev) => (prev < 90 ? prev + 1 : prev));
           }
         },
       });
+      // ... (rest of the logic)
 
       const blobUrl = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement('a');
